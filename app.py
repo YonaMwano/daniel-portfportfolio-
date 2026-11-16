@@ -4,31 +4,30 @@ app = Flask(__name__)
 
 # Default project placeholders (update links later)
 PROJECTS = [
-    {
-        "title": "Underwater Object Detection System",
-        "description": "Real-time adaptive detection framework integrating Transweather Attention Block with YOLOv12 for robust object detection in turbid marine environments.",
-        "link": "#"
+     {
+                    
+        "title": "Fikra AI - Multi-Modal Intelligence Platform",
+        "description": "A professional AI chat interface built with Next.js and PostgreSQL. Fikra AI allows seamless interaction with multiple LLMs via a unified routing system. It features a robust model-switching architecture, utilizing Groq (openai/gpt-oss-120b & qwen/qwen3.8-27b) for high-speed text and vision tasks, alongside MagicHour APIs (z-image-turbo & qwen-image-2.1) for generative image creation and editing. The platform includes document generation capabilities and a frictionless onboarding flow, allowing guests to test general text features while gating premium actions like file uploads/downloads behind a secure Google Authentication gate.",
+        "link": "https://fikra-ai-nine.vercel.app"
     },
     {
-        "title": "Full-Stack Inventory Management",
-        "description": "Scalable web application for product tracking, stock management and reporting built with Python, TypeScript, MySQL and modern frontend.",
-        "link": "#"
+        "title": "LoadMaster - Premium Dispatch System",
+        "description": "A web-based software solution for dispatching and logistics management. The system is presumably used to centrally plan, coordinate and monitor transports, freight loads, vehicles and drivers.",
+        "link": "https://loadmaster-dispatch.netlify.app"
     },
+    {
+            "title": "Retail Workspace",
+            "description": "Retail management workspace designed to streamline daily operations for small shops and independent retailers. It provides a centralized platform for tracking product inventory, managing point-of-sale transactions, and monitoring sales performance, helping store owners organize workflows and run their business more efficiently.",
+            "link": "https://danny-minishop.netlify.app"
+        },
+
+
+
     {
         "title": "Real-time Collaboration Platform",
         "description": "Interactive web app with live updates, authentication and responsive UI using Flask, TypeScript and PostgreSQL.",
         "link": "#"
-    },
-    {
-        "title": "Smart Dashboard & Analytics",
-        "description": "Data visualization and analytics dashboard with dynamic charts, filters and backend APIs powered by Python and PSQL.",
-        "link": "#"
-    },
-    {
-        "title": "API-Driven Web Services",
-        "description": "RESTful services and frontend clients using Python, TypeScript, MySQL/PostgreSQL with clean architecture and responsive design.",
-        "link": "#"
-    },
+    }
 ]
 
 RESEARCH_PAPER = {
