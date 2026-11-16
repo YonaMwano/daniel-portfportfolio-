@@ -5,37 +5,37 @@ app = Flask(__name__)
 # Default project placeholders (update links later)
 PROJECTS = [
     {
-        "title": "Inventory Management System",
-        "description": "A full-stack web application for tracking products, stock levels, and generating reports using Flask, MySQL, and modern frontend technologies.",
+        "title": "Underwater Object Detection System",
+        "description": "Real-time adaptive detection framework integrating Transweather Attention Block with YOLOv12 for robust object detection in turbid marine environments.",
         "link": "#"
     },
     {
-        "title": "Real-time Chat Application",
-        "description": "Interactive messaging platform with live updates, user authentication, and responsive design built with Flask and JavaScript.",
+        "title": "Full-Stack Inventory Management",
+        "description": "Scalable web application for product tracking, stock management and reporting built with Python, TypeScript, MySQL and modern frontend.",
         "link": "#"
     },
     {
-        "title": "Architectural Cost Calculator (BOQ)",
-        "description": "Web-based tool for generating Bill of Quantities and cost estimates for construction projects with dynamic calculations.",
+        "title": "Real-time Collaboration Platform",
+        "description": "Interactive web app with live updates, authentication and responsive UI using Flask, TypeScript and PostgreSQL.",
         "link": "#"
     },
     {
-        "title": "Sudoku Puzzle Game",
-        "description": "Browser-based interactive Sudoku game featuring Ajax-powered UI, difficulty levels, and timer functionality.",
+        "title": "Smart Dashboard & Analytics",
+        "description": "Data visualization and analytics dashboard with dynamic charts, filters and backend APIs powered by Python and PSQL.",
         "link": "#"
     },
     {
-        "title": "Offline Medicine Expiry Detector",
-        "description": "Android application that uses barcode scanning and OCR to detect expired medicines offline, helping pharmacies and protecting patients.",
+        "title": "API-Driven Web Services",
+        "description": "RESTful services and frontend clients using Python, TypeScript, MySQL/PostgreSQL with clean architecture and responsive design.",
         "link": "#"
     },
 ]
 
 RESEARCH_PAPER = {
-    "title": "Offline Android App for Expired Medicine Detection using Barcode Scanning and OCR",
-    "description": "An offline Android application that uses barcode scanning and Optical Character Recognition (OCR) to automatically detect expired medicine. The system protects patients and helps pharmacies manage stock without requiring an internet connection.",
-    "link": "https://www.isroset.org/pdf_paper_view.php?paper_id=4150&1-ISROSET-IJSRMS-11142.pdf",
-    "publisher": "ISROSET - International Journal of Scientific Research in Multidisciplinary Studies"
+    "title": "An Adaptive Underwater Object Detection Framework Using YOLOv12 with Transweather Attention Block",
+    "description": "Underwater environments present severe visual challenges—such as light refraction, color distortion, low contrast, and suspended particles—that degrade the accuracy of standard computer vision models. This research develops an adaptive real-time object detection framework that integrates a Transweather Attention Block into the YOLOv12 architecture. By dynamically filtering out environmental degradation and enhancing feature extraction, the proposed model significantly improves detection precision and robustness for submerged objects in turbid and complex marine conditions.",
+    "link": "https://www.isroset.org/pdf_paper_view.php?paper_id=4161&12-ISROSET-IJSRMS-11250.pdf",
+    "publisher": "International Journal of Scientific Research in Multidisciplinary Studies (IJSRMS), Vol. 12 — Paper ID: 4161"
 }
 
 @app.route("/")

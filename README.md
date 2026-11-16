@@ -1,17 +1,17 @@
-# Magdalena Isaya Makweta — Portfolio Website
+# Daniel Gift Mapepele — Portfolio Website
 
-A professional, responsive portfolio website built with **Python Flask**, **Bootstrap 5**, and **Tailwind CSS** (via CDN).
+A professional, fully responsive portfolio website built with **Python Flask**, **Bootstrap 5**, and **Tailwind CSS** (CDN).
 
 ## Features
 
-- Clean, modern, fully responsive design
-- Profile picture placeholder (easy to replace)
+- Clean, modern, mobile-first design
+- Working hamburger menu (Bootstrap collapse fixed)
+- Profile picture placeholder
 - About, Skills, Projects, Research & Contact sections
-- 5 default project cards (links can be updated later)
-- Published research paper section with direct ISROSET link
-- Bootstrap Icons (professional icons, no emojis)
+- 5 default project cards (ready for real links)
+- Published research paper section (ISROSET / IJSRMS)
+- Bootstrap Icons (professional icons)
 - Sticky navigation with smooth scrolling
-- Mobile-friendly
 
 ## Quick Start
 
@@ -35,7 +35,7 @@ Open your browser at: **http://127.0.0.1:5000**
    ```
    static/img/profile.jpg
    ```
-2. In `templates/index.html`, find the `<img>` tag inside the hero section and change the `src` to:
+2. In `templates/index.html`, find the hero `<img>` and change the `src` to:
    ```html
    src="{{ url_for('static', filename='img/profile.jpg') }}"
    ```
@@ -47,7 +47,12 @@ Edit the `PROJECTS` list in `app.py` and replace `"#"` with the real project URL
 ## Tech Stack
 
 - **Backend:** Python Flask
-- **Frontend:** Bootstrap 5 + Tailwind CSS (CDN)
+- **Frontend:** Bootstrap 5 + Tailwind CSS (CDN, preflight disabled to avoid conflicts)
 - **Icons:** Bootstrap Icons
 - **Fonts:** Inter + Poppins (Google Fonts)
 
+## Contact
+
+- Email: danielgift528@gmail.com
+- Phone: +255 762 109 902
+- GitHub: https://github.com/Danny3026
