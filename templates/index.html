@@ -4,32 +4,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <title>Daniel Gift Mapepele | Software Engineer</title>
-    <meta name="description" content="Portfolio of Daniel Gift Mapepele - Software Engineer specialized in Python, TypeScript, MySQL, PostgreSQL, HTML, CSS and computer vision research.">
+    <meta name="description" content="Portfolio of Daniel Gift Mapepele - Software Engineer specialized in Python, TypeScript, Node.js, Express.js, MySQL, PostgreSQL and computer vision research.">
+    <meta name="theme-color" content="#0b1220">
 
-    <!-- Bootstrap 5 CSS only (no Tailwind - avoids conflicts) -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-
-    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
 
     <style>
         :root {
-            --primary: #0c8ce9;
-            --primary-dark: #0158a1;
-            --primary-light: #e0effe;
-            --slate-50: #f8fafc;
-            --slate-100: #f1f5f9;
-            --slate-200: #e2e8f0;
-            --slate-500: #64748b;
-            --slate-600: #475569;
-            --slate-700: #334155;
-            --slate-800: #1e293b;
-            --slate-900: #0f172a;
+            --bg: #070b14;
+            --bg-elevated: #0d1424;
+            --bg-card: #111827;
+            --bg-soft: #0f172a;
+            --border: rgba(148, 163, 184, 0.12);
+            --border-strong: rgba(148, 163, 184, 0.22);
+            --text: #e5eefb;
+            --text-muted: #94a3b8;
+            --text-soft: #64748b;
+            --primary: #38bdf8;
+            --primary-2: #818cf8;
+            --primary-dark: #0ea5e9;
+            --accent: #22d3ee;
+            --success: #34d399;
+            --radius: 1.25rem;
+            --radius-sm: 0.85rem;
+            --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+            --nav-h: 72px;
         }
 
         * { box-sizing: border-box; }
@@ -37,178 +40,464 @@
 
         body {
             font-family: 'Inter', system-ui, -apple-system, sans-serif;
-            background-color: var(--slate-50);
-            color: var(--slate-800);
+            background: var(--bg);
+            color: var(--text);
             overflow-x: hidden;
+            line-height: 1.6;
         }
 
-        .font-display { font-family: 'Poppins', 'Inter', sans-serif; }
+        .font-display {
+            font-family: 'Space Grotesk', 'Inter', sans-serif;
+            letter-spacing: -0.02em;
+        }
 
+        /* Ambient background */
+        .page-bg {
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            z-index: -1;
+            background:
+                radial-gradient(900px 500px at 10% -10%, rgba(56, 189, 248, 0.16), transparent 60%),
+                radial-gradient(700px 400px at 90% 10%, rgba(129, 140, 248, 0.14), transparent 55%),
+                radial-gradient(600px 400px at 50% 100%, rgba(34, 211, 238, 0.08), transparent 50%),
+                var(--bg);
+        }
+
+        /* ========== NAVBAR ========== */
         #siteNavbar {
-            background: rgba(255, 255, 255, 0.98) !important;
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            height: var(--nav-h);
+            background: rgba(7, 11, 20, 0.75) !important;
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            border-bottom: 1px solid var(--border) !important;
             z-index: 1030;
-            padding-top: 0.7rem;
-            padding-bottom: 0.7rem;
+            transition: background 0.25s ease, border-color 0.25s ease;
+        }
+        #siteNavbar.scrolled {
+            background: rgba(7, 11, 20, 0.92) !important;
+            border-bottom-color: var(--border-strong) !important;
         }
 
-        .navbar-brand span.logo-circle {
-            width: 36px; height: 36px;
-            background: var(--primary); color: #fff;
-            border-radius: 50%;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 1rem; font-weight: 700;
+        .navbar-brand {
+            color: var(--text) !important;
+            font-weight: 700;
+            font-size: 1.05rem;
+        }
+        .logo-mark {
+            width: 38px;
+            height: 38px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            color: #041018;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1rem;
+            box-shadow: 0 8px 20px rgba(56, 189, 248, 0.25);
         }
 
         .nav-link-custom {
-            color: var(--slate-700) !important;
+            color: var(--text-muted) !important;
             font-weight: 500;
-            padding: 0.5rem 0.9rem !important;
-            position: relative;
-            transition: color 0.2s ease;
+            font-size: 0.92rem;
+            padding: 0.55rem 0.85rem !important;
+            border-radius: 999px;
+            transition: color 0.2s ease, background 0.2s ease;
         }
         .nav-link-custom:hover,
-        .nav-link-custom.active { color: var(--primary) !important; }
-
-        @media (min-width: 992px) {
-            .nav-link-custom::after {
-                content: '';
-                position: absolute;
-                width: 0; height: 2px; bottom: 4px; left: 0.9rem;
-                background: var(--primary);
-                transition: width 0.25s ease;
-            }
-            .nav-link-custom:hover::after,
-            .nav-link-custom.active::after { width: calc(100% - 1.8rem); }
+        .nav-link-custom.active {
+            color: #fff !important;
+            background: rgba(148, 163, 184, 0.08);
         }
 
+        /* Hamburger: icon only, no box */
         .navbar-toggler {
-            border: 1px solid var(--slate-200) !important;
-            border-radius: 0.5rem;
-            padding: 0.45rem 0.65rem;
-            background: #fff;
+            border: none !important;
+            background: transparent !important;
+            box-shadow: none !important;
+            padding: 0.35rem !important;
+            width: 40px;
+            height: 40px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
-        .navbar-toggler:focus {
-            box-shadow: 0 0 0 0.2rem rgba(12, 140, 233, 0.25) !important;
-            outline: none;
+        .navbar-toggler:focus,
+        .navbar-toggler:active {
+            box-shadow: none !important;
+            outline: none !important;
         }
-        .navbar-toggler-icon { width: 1.35em; height: 1.35em; }
+        .navbar-toggler-icon {
+            width: 22px;
+            height: 16px;
+            background-image: none !important;
+            position: relative;
+            display: inline-block;
+        }
+        .navbar-toggler-icon,
+        .navbar-toggler-icon::before,
+        .navbar-toggler-icon::after {
+            content: '';
+            display: block;
+            height: 2px;
+            width: 22px;
+            background: #e2e8f0;
+            border-radius: 2px;
+            transition: transform 0.25s ease, opacity 0.2s ease, background 0.2s ease;
+        }
+        .navbar-toggler-icon::before {
+            position: absolute;
+            top: -7px;
+            left: 0;
+        }
+        .navbar-toggler-icon::after {
+            position: absolute;
+            bottom: -7px;
+            left: 0;
+        }
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon {
+            background: transparent;
+        }
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::before {
+            top: 0;
+            transform: rotate(45deg);
+        }
+        .navbar-toggler[aria-expanded="true"] .navbar-toggler-icon::after {
+            bottom: 0;
+            transform: rotate(-45deg);
+        }
 
         @media (max-width: 991.98px) {
             #mainNavbar {
-                background: #ffffff;
-                border-radius: 0.75rem;
+                background: rgba(13, 20, 36, 0.98);
+                border: 1px solid var(--border);
+                border-radius: 1rem;
                 margin-top: 0.75rem;
-                padding: 0.75rem;
-                box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
-                border: 1px solid var(--slate-200);
+                padding: 0.6rem;
+                box-shadow: var(--shadow);
             }
             #mainNavbar .nav-link-custom {
-                padding: 0.8rem 1rem !important;
-                border-radius: 0.5rem;
+                padding: 0.85rem 1rem !important;
+                border-radius: 0.75rem;
                 display: block;
             }
-            #mainNavbar .nav-link-custom:hover,
-            #mainNavbar .nav-link-custom.active { background: var(--primary-light); }
-            #mainNavbar .btn { width: 100%; margin-top: 0.35rem; }
+            #mainNavbar .btn {
+                width: 100%;
+                margin-top: 0.4rem;
+            }
         }
 
-        .hero-gradient {
-            background: linear-gradient(135deg, #0c8ce9 0%, #0158a1 45%, #4f46e5 100%);
-            color: #fff;
+        /* ========== HERO ========== */
+        .hero {
+            min-height: calc(100vh - var(--nav-h));
+            display: flex;
+            align-items: center;
+            padding: 4rem 0 5rem;
+            position: relative;
         }
-        .hero-title {
-            font-size: clamp(1.75rem, 5vw, 2.85rem);
-            line-height: 1.2;
-            font-weight: 700;
-        }
-        .profile-img {
-            width: 240px; height: 240px;
-            object-fit: cover; border-radius: 50%;
-            box-shadow: 0 0 0 6px rgba(255,255,255,0.25), 0 20px 40px rgba(0,0,0,0.2);
-            background: #fff;
-        }
-        @media (min-width: 992px) {
-            .profile-img { width: 280px; height: 280px; }
-        }
-
-        section { scroll-margin-top: 80px; }
-
-        .section-badge {
-            background: var(--primary-light);
-            color: var(--primary-dark);
-            font-weight: 500;
-            border-radius: 999px;
-            padding: 0.35rem 0.9rem;
-            font-size: 0.85rem;
-            display: inline-block;
-        }
-
-        .card-soft {
-            background: #fff;
-            border: 1px solid var(--slate-200);
-            border-radius: 1rem;
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-        }
-        .card-soft:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 16px 36px -10px rgba(12, 140, 233, 0.18);
-        }
-
-        .icon-circle {
-            width: 56px; height: 56px; border-radius: 50%;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 1.35rem;
-        }
-        .icon-circle-sm {
-            width: 48px; height: 48px; border-radius: 0.65rem;
-            display: inline-flex; align-items: center; justify-content: center;
-            font-size: 1.2rem;
-        }
-
-        .skill-badge {
-            display: inline-block;
-            background: var(--slate-100);
-            color: var(--slate-700);
-            border: 1px solid var(--slate-200);
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--primary);
+            background: rgba(56, 189, 248, 0.1);
+            border: 1px solid rgba(56, 189, 248, 0.2);
             border-radius: 999px;
             padding: 0.4rem 0.85rem;
+            margin-bottom: 1.25rem;
+        }
+        .eyebrow .dot {
+            width: 7px; height: 7px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 0 4px rgba(34, 211, 238, 0.15);
+        }
+        .hero-title {
+            font-size: clamp(2.1rem, 5.5vw, 3.6rem);
+            line-height: 1.08;
+            font-weight: 700;
+            margin-bottom: 1.1rem;
+        }
+        .hero-title .gradient-text {
+            background: linear-gradient(120deg, #38bdf8 0%, #a78bfa 45%, #22d3ee 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .hero-lead {
+            color: var(--text-muted);
+            font-size: 1.08rem;
+            max-width: 34rem;
+            margin-bottom: 1.75rem;
+        }
+        .hero-actions .btn {
+            border-radius: 999px;
+            padding: 0.75rem 1.35rem;
+            font-weight: 600;
+        }
+        .btn-glow {
+            background: linear-gradient(135deg, var(--primary), var(--primary-2));
+            border: none;
+            color: #041018;
+            box-shadow: 0 10px 30px rgba(56, 189, 248, 0.28);
+        }
+        .btn-glow:hover {
+            color: #041018;
+            filter: brightness(1.05);
+            transform: translateY(-1px);
+        }
+        .btn-ghost {
+            background: transparent;
+            border: 1px solid var(--border-strong);
+            color: var(--text);
+        }
+        .btn-ghost:hover {
+            background: rgba(148, 163, 184, 0.08);
+            border-color: var(--text-muted);
+            color: #fff;
+        }
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            margin-top: 2rem;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+        }
+        .hero-meta a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: color 0.2s ease;
+        }
+        .hero-meta a:hover { color: var(--primary); }
+
+        .profile-wrap {
+            position: relative;
+            display: inline-block;
+        }
+        .profile-wrap::before {
+            content: '';
+            position: absolute;
+            inset: -14px;
+            border-radius: 50%;
+            background: conic-gradient(from 180deg, rgba(56,189,248,0.0), rgba(56,189,248,0.55), rgba(129,140,248,0.5), rgba(34,211,238,0.0));
+            animation: spin 10s linear infinite;
+            opacity: 0.7;
+            z-index: 0;
+        }
+        .profile-wrap::after {
+            content: '';
+            position: absolute;
+            inset: -6px;
+            border-radius: 50%;
+            background: var(--bg);
+            z-index: 1;
+        }
+        .profile-img {
+            position: relative;
+            z-index: 2;
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid rgba(255,255,255,0.08);
+            background: var(--bg-elevated);
+        }
+        @media (min-width: 992px) {
+            .profile-img { width: 300px; height: 300px; }
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* ========== SECTIONS ========== */
+        section { scroll-margin-top: calc(var(--nav-h) + 12px); }
+        .section {
+            padding: 5rem 0;
+        }
+        .section-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            color: var(--primary);
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-bottom: 0.85rem;
+        }
+        .section-title {
+            font-size: clamp(1.7rem, 3.5vw, 2.35rem);
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+        }
+        .section-sub {
+            color: var(--text-muted);
+            max-width: 36rem;
+            margin: 0 auto 2.75rem;
+        }
+
+        .glass-card {
+            background: linear-gradient(180deg, rgba(17, 24, 39, 0.9), rgba(15, 23, 42, 0.85));
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-4px);
+            border-color: rgba(56, 189, 248, 0.28);
+            box-shadow: 0 18px 40px rgba(0,0,0,0.28);
+        }
+
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 14px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            background: rgba(56, 189, 248, 0.1);
+            color: var(--primary);
+            border: 1px solid rgba(56, 189, 248, 0.15);
+        }
+        .icon-box.purple {
+            background: rgba(129, 140, 248, 0.12);
+            color: #a5b4fc;
+            border-color: rgba(129, 140, 248, 0.18);
+        }
+        .icon-box.green {
+            background: rgba(52, 211, 153, 0.1);
+            color: var(--success);
+            border-color: rgba(52, 211, 153, 0.18);
+        }
+
+        .skill-chip {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+            padding: 0.45rem 0.85rem;
+            border-radius: 999px;
             font-size: 0.85rem;
             font-weight: 500;
-            margin: 0.2rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            color: var(--text);
+            background: rgba(148, 163, 184, 0.08);
+            border: 1px solid var(--border);
+            margin: 0.25rem;
+            transition: border-color 0.2s ease, background 0.2s ease;
         }
-        .skill-badge:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(12, 140, 233, 0.12);
+        .skill-chip:hover {
+            border-color: rgba(56, 189, 248, 0.35);
+            background: rgba(56, 189, 248, 0.08);
         }
 
-        .bg-soft { background: var(--slate-50); }
-        .bg-soft-blue { background: #f0f7ff; border-color: #b9dffd !important; }
+        .check-item {
+            display: flex;
+            gap: 0.75rem;
+            margin-bottom: 0.9rem;
+            color: var(--text-muted);
+        }
+        .check-item i {
+            color: var(--primary);
+            margin-top: 0.15rem;
+            flex-shrink: 0;
+        }
 
-        .contact-card a { text-decoration: none; color: inherit; }
-        .contact-card .card-soft:hover { border-color: #93c5fd; }
+        .project-card .badge-soon {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            text-transform: uppercase;
+            color: var(--text-soft);
+            background: rgba(148, 163, 184, 0.1);
+            border: 1px solid var(--border);
+            border-radius: 999px;
+            padding: 0.3rem 0.65rem;
+        }
 
-        footer { background: var(--slate-900); color: #94a3b8; }
-        footer a { color: #94a3b8; transition: color 0.2s ease; }
-        footer a:hover { color: #fff; }
+        .research-card {
+            position: relative;
+            overflow: hidden;
+        }
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--primary-2), var(--accent));
+        }
 
-        .btn-primary { background-color: var(--primary); border-color: var(--primary); }
-        .btn-primary:hover { background-color: var(--primary-dark); border-color: var(--primary-dark); }
-        .btn-outline-primary { color: var(--primary); border-color: var(--primary); }
-        .btn-outline-primary:hover { background-color: var(--primary); border-color: var(--primary); color: #fff; }
+        .contact-item {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            height: 100%;
+        }
+        .contact-item .glass-card {
+            height: 100%;
+            text-align: center;
+            padding: 1.75rem 1.25rem;
+        }
+        .contact-item:hover .glass-card {
+            border-color: rgba(56, 189, 248, 0.35);
+        }
+        .contact-item h4 {
+            color: var(--text);
+            font-size: 0.95rem;
+            margin: 0.85rem 0 0.25rem;
+        }
+        .contact-item p {
+            color: var(--text-muted);
+            font-size: 0.88rem;
+            margin: 0;
+            word-break: break-word;
+        }
 
-        .text-primary-custom { color: var(--primary) !important; }
-        .text-muted-custom { color: var(--slate-500) !important; }
+        footer {
+            border-top: 1px solid var(--border);
+            background: rgba(7, 11, 20, 0.9);
+            color: var(--text-soft);
+            padding: 2.5rem 0;
+        }
+        footer a {
+            color: var(--text-muted);
+            transition: color 0.2s ease;
+        }
+        footer a:hover { color: var(--primary); }
+
+        .btn-primary-soft {
+            background: rgba(56, 189, 248, 0.12);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            color: var(--primary);
+            border-radius: 999px;
+            font-weight: 600;
+        }
+        .btn-primary-soft:hover {
+            background: rgba(56, 189, 248, 0.2);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        @media (max-width: 575.98px) {
+            .hero { padding: 2.5rem 0 3.5rem; }
+            .section { padding: 3.5rem 0; }
+            .profile-img { width: 200px; height: 200px; }
+        }
     </style>
 </head>
 <body>
+    <div class="page-bg" aria-hidden="true"></div>
 
-    <nav class="navbar navbar-expand-lg sticky-top shadow-sm border-bottom" id="siteNavbar">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg sticky-top" id="siteNavbar">
         <div class="container">
-            <a class="navbar-brand font-display fw-bold d-flex align-items-center gap-2 text-primary-custom" href="#home">
-                <span class="logo-circle">D</span>
+            <a class="navbar-brand font-display d-flex align-items-center gap-2" href="#home">
+                <span class="logo-mark">D</span>
                 <span class="d-none d-sm-inline">Daniel</span>
             </a>
 
@@ -226,7 +515,7 @@
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#research">Research</a></li>
                     <li class="nav-item"><a class="nav-link nav-link-custom" href="#contact">Contact</a></li>
                     <li class="nav-item ms-lg-2 mt-2 mt-lg-0">
-                        <a class="btn btn-primary rounded-pill px-4 fw-medium shadow-sm"
+                        <a class="btn btn-glow btn-sm px-3"
                            href="https://github.com/Danny3026" target="_blank" rel="noopener">
                             <i class="bi bi-github me-1"></i> GitHub
                         </a>
@@ -236,159 +525,142 @@
         </div>
     </nav>
 
-    <section id="home" class="hero-gradient py-5">
-        <div class="container py-4 py-lg-5">
-            <div class="row align-items-center g-4 g-lg-5">
+    <!-- HERO -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="row align-items-center g-5">
                 <div class="col-lg-7 order-2 order-lg-1 text-center text-lg-start">
-                    <p class="text-white-50 fw-medium mb-2 text-uppercase" style="letter-spacing:0.08em;font-size:0.8rem;">
-                        Software Engineer
-                    </p>
-                    <h1 class="font-display hero-title mb-3">
-                        Hi, I'm <span class="text-white">Daniel Gift Mapepele</span>
+                    <div class="eyebrow justify-content-center justify-content-lg-start">
+                        <span class="dot"></span> Available for opportunities
+                    </div>
+                    <h1 class="font-display hero-title">
+                        Building reliable software<br>
+                        <span class="gradient-text">and intelligent systems</span>
                     </h1>
-                    <p class="lead text-white-50 mb-4 mx-auto mx-lg-0" style="max-width:520px;font-size:1.05rem;">
-                        Software Engineer passionate about building robust web systems, intelligent computer vision solutions, and clean full-stack applications.
+                    <p class="hero-lead mx-auto mx-lg-0">
+                        I'm <strong class="text-white">Daniel Gift Mapepele</strong> — a Software Engineer focused on full-stack development, modern backends, and adaptive computer vision research.
                     </p>
-                    <div class="d-flex flex-wrap gap-2 gap-sm-3 justify-content-center justify-content-lg-start">
-                        <a href="#projects" class="btn btn-light btn-lg rounded-pill px-4 fw-semibold shadow">
+                    <div class="hero-actions d-flex flex-wrap gap-2 justify-content-center justify-content-lg-start">
+                        <a href="#projects" class="btn btn-glow">
                             View Projects <i class="bi bi-arrow-right ms-1"></i>
                         </a>
-                        <a href="#contact" class="btn btn-outline-light btn-lg rounded-pill px-4 fw-semibold">
-                            Get in Touch
-                        </a>
+                        <a href="#contact" class="btn btn-ghost">Get in Touch</a>
                     </div>
-                    <div class="d-flex flex-wrap gap-3 mt-4 pt-1 justify-content-center justify-content-lg-start">
-                        <a href="mailto:danielgift528@gmail.com" class="text-white text-decoration-none d-flex align-items-center gap-2 small opacity-90">
-                            <i class="bi bi-envelope-fill"></i>
-                            <span class="text-break">danielgift528@gmail.com</span>
+                    <div class="hero-meta justify-content-center justify-content-lg-start">
+                        <a href="mailto:danielgift528@gmail.com">
+                            <i class="bi bi-envelope me-1"></i> danielgift528@gmail.com
                         </a>
-                        <a href="tel:+255762109902" class="text-white text-decoration-none d-flex align-items-center gap-2 small opacity-90">
-                            <i class="bi bi-telephone-fill"></i> +255 762 109 902
+                        <a href="tel:+255762109902">
+                            <i class="bi bi-telephone me-1"></i> +255 762 109 902
                         </a>
                     </div>
                 </div>
-
                 <div class="col-lg-5 order-1 order-lg-2 text-center">
-                    <div class="position-relative d-inline-block">
-                        <img src="https://ui-avatars.com/api/?name=Daniel+Gift+Mapepele&background=0c8ce9&color=fff&size=320&bold=true&font-size=0.33"
+                    <div class="profile-wrap">
+                        <img src="https://ui-avatars.com/api/?name=Daniel+Gift+Mapepele&background=0d1424&color=38bdf8&size=360&bold=true&font-size=0.33"
                              alt="Daniel Gift Mapepele"
                              class="profile-img">
                     </div>
-                    <p class="mt-3 small text-white opacity-75 mb-0">
-                        <i class="bi bi-image me-1"></i>
-                        Replace with your photo in <code class="text-white">static/img/profile.jpg</code>
+                    <p class="mt-3 small text-muted mb-0" style="color:var(--text-soft)!important;">
+                        Replace with your photo in <code style="color:var(--text-muted);">static/img/profile.jpg</code>
                     </p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="about" class="py-5 bg-white">
-        <div class="container py-3 py-lg-4">
-            <div class="row justify-content-center mb-4 mb-lg-5">
-                <div class="col-lg-8 text-center">
-                    <span class="section-badge mb-3">About Me</span>
-                    <h2 class="font-display fw-bold display-6 mb-3">A bit about my journey</h2>
-                    <p class="text-muted-custom lead mb-0" style="font-size:1.1rem;">
-                        Software Engineer and Computer Science graduate from Ruaha Catholic University.
-                    </p>
-                </div>
+    <!-- ABOUT -->
+    <section id="about" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center"><i class="bi bi-person-badge"></i> About</div>
+                <h2 class="font-display section-title">A focused software engineer</h2>
+                <p class="section-sub">Computer Science graduate from Ruaha Catholic University, building practical systems end to end.</p>
             </div>
             <div class="row g-4">
                 <div class="col-lg-6">
-                    <div class="card-soft p-4 p-md-5 h-100 bg-soft">
-                        <h3 class="font-display fw-semibold h5 mb-3">
-                            <i class="bi bi-mortarboard-fill text-primary-custom me-2"></i> Education
-                        </h3>
-                        <p class="mb-1 fw-semibold">Bachelor of Science in Computer Science</p>
-                        <p class="text-muted-custom mb-2">Ruaha Catholic University</p>
-                        <p class="text-muted-custom small mb-0">
+                    <div class="glass-card p-4 p-md-5 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="icon-box"><i class="bi bi-mortarboard-fill"></i></div>
+                            <div>
+                                <h3 class="font-display h5 mb-0">Education</h3>
+                                <p class="mb-0 small" style="color:var(--text-soft);">Academic foundation</p>
+                            </div>
+                        </div>
+                        <p class="fw-semibold mb-1">BSc Computer Science</p>
+                        <p class="mb-2" style="color:var(--text-muted);">Ruaha Catholic University</p>
+                        <p class="small mb-0" style="color:var(--text-soft);">
                             <i class="bi bi-calendar3 me-1"></i> Graduated
                         </p>
-                        <hr class="my-4">
-                        <p class="text-muted-custom mb-0">
-                            Focused on building practical software solutions using modern backend and frontend technologies, databases, and intelligent systems.
+                        <hr style="border-color:var(--border); margin:1.4rem 0;">
+                        <p class="mb-0" style="color:var(--text-muted);">
+                            Specialized in practical software engineering — backends, databases, frontend interfaces, and applied research in computer vision.
                         </p>
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="card-soft p-4 p-md-5 h-100 bg-soft-blue">
-                        <h3 class="font-display fw-semibold h5 mb-3">
-                            <i class="bi bi-lightbulb-fill text-primary-custom me-2"></i> What I do
-                        </h3>
-                        <ul class="list-unstyled mb-0">
-                            <li class="d-flex gap-3 mb-3">
-                                <i class="bi bi-check-circle-fill text-primary-custom mt-1"></i>
-                                <span>Design and develop full-stack web applications</span>
-                            </li>
-                            <li class="d-flex gap-3 mb-3">
-                                <i class="bi bi-check-circle-fill text-primary-custom mt-1"></i>
-                                <span>Build robust backends with Python and TypeScript</span>
-                            </li>
-                            <li class="d-flex gap-3 mb-3">
-                                <i class="bi bi-check-circle-fill text-primary-custom mt-1"></i>
-                                <span>Work with relational databases (MySQL &amp; PostgreSQL)</span>
-                            </li>
-                            <li class="d-flex gap-3">
-                                <i class="bi bi-check-circle-fill text-primary-custom mt-1"></i>
-                                <span>Research adaptive computer vision systems for challenging environments</span>
-                            </li>
-                        </ul>
+                    <div class="glass-card p-4 p-md-5 h-100">
+                        <div class="d-flex align-items-center gap-3 mb-3">
+                            <div class="icon-box purple"><i class="bi bi-lightning-charge-fill"></i></div>
+                            <div>
+                                <h3 class="font-display h5 mb-0">What I do</h3>
+                                <p class="mb-0 small" style="color:var(--text-soft);">Day-to-day focus</p>
+                            </div>
+                        </div>
+                        <div class="check-item"><i class="bi bi-check-circle-fill"></i><span>Design and ship full-stack web applications</span></div>
+                        <div class="check-item"><i class="bi bi-check-circle-fill"></i><span>Build APIs and services with Python, Node.js &amp; Express</span></div>
+                        <div class="check-item"><i class="bi bi-check-circle-fill"></i><span>Model data with MySQL and PostgreSQL</span></div>
+                        <div class="check-item mb-0"><i class="bi bi-check-circle-fill"></i><span>Research adaptive vision systems for difficult environments</span></div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="py-5 bg-soft">
-        <div class="container py-3 py-lg-4">
-            <div class="row justify-content-center mb-4 mb-lg-5">
-                <div class="col-lg-8 text-center">
-                    <span class="section-badge mb-3">Skills</span>
-                    <h2 class="font-display fw-bold display-6 mb-3">Technologies I work with</h2>
-                    <p class="text-muted-custom mb-0">Core tools and languages I use to build reliable software.</p>
-                </div>
+    <!-- SKILLS -->
+    <section id="skills" class="section" style="background:rgba(15,23,42,0.35);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center"><i class="bi bi-code-slash"></i> Skills</div>
+                <h2 class="font-display section-title">Technologies I work with</h2>
+                <p class="section-sub">A modern stack for backends, frontends, and intelligent systems.</p>
             </div>
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4">
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-soft p-4 h-100 text-center">
-                        <div class="icon-circle mx-auto mb-3" style="background:#e0effe;color:#0c8ce9;">
-                            <i class="bi bi-server"></i>
-                        </div>
-                        <h4 class="font-display fw-semibold h5 mb-3">Backend</h4>
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="icon-box mx-auto mb-3"><i class="bi bi-server"></i></div>
+                        <h4 class="font-display h5 mb-3">Backend</h4>
                         <div>
-                            <span class="skill-badge">Python</span>
-                            <span class="skill-badge">TypeScript</span>
-                            <span class="skill-badge">MySQL</span>
-                            <span class="skill-badge">PostgreSQL</span>
+                            <span class="skill-chip">Python</span>
+                            <span class="skill-chip">Node.js</span>
+                            <span class="skill-chip">Express.js</span>
+                            <span class="skill-chip">TypeScript</span>
+                            <span class="skill-chip">MySQL</span>
+                            <span class="skill-chip">PostgreSQL</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-soft p-4 h-100 text-center">
-                        <div class="icon-circle mx-auto mb-3" style="background:#e0e7ff;color:#4f46e5;">
-                            <i class="bi bi-layout-text-window-reverse"></i>
-                        </div>
-                        <h4 class="font-display fw-semibold h5 mb-3">Frontend</h4>
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="icon-box purple mx-auto mb-3"><i class="bi bi-window-desktop"></i></div>
+                        <h4 class="font-display h5 mb-3">Frontend</h4>
                         <div>
-                            <span class="skill-badge">HTML5</span>
-                            <span class="skill-badge">CSS3</span>
-                            <span class="skill-badge">TypeScript</span>
-                            <span class="skill-badge">Bootstrap</span>
+                            <span class="skill-chip">HTML5</span>
+                            <span class="skill-chip">CSS3</span>
+                            <span class="skill-chip">TypeScript</span>
+                            <span class="skill-chip">Bootstrap</span>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4">
-                    <div class="card-soft p-4 h-100 text-center">
-                        <div class="icon-circle mx-auto mb-3" style="background:#d1fae5;color:#059669;">
-                            <i class="bi bi-tools"></i>
-                        </div>
-                        <h4 class="font-display fw-semibold h5 mb-3">Other</h4>
+                    <div class="glass-card p-4 h-100 text-center">
+                        <div class="icon-box green mx-auto mb-3"><i class="bi bi-cpu"></i></div>
+                        <h4 class="font-display h5 mb-3">Other</h4>
                         <div>
-                            <span class="skill-badge">Computer Vision</span>
-                            <span class="skill-badge">YOLOv12</span>
-                            <span class="skill-badge">Git &amp; GitHub</span>
-                            <span class="skill-badge">Research</span>
+                            <span class="skill-chip">Computer Vision</span>
+                            <span class="skill-chip">YOLOv12</span>
+                            <span class="skill-chip">Git &amp; GitHub</span>
+                            <span class="skill-chip">Research</span>
                         </div>
                     </div>
                 </div>
@@ -396,29 +668,26 @@
         </div>
     </section>
 
-    <section id="projects" class="py-5 bg-white">
-        <div class="container py-3 py-lg-4">
-            <div class="row justify-content-center mb-4 mb-lg-5">
-                <div class="col-lg-8 text-center">
-                    <span class="section-badge mb-3">Projects</span>
-                    <h2 class="font-display fw-bold display-6 mb-3">Featured Work</h2>
-                    <p class="text-muted-custom mb-0">Selected projects. Links will be added soon.</p>
-                </div>
+    <!-- PROJECTS -->
+    <section id="projects" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center"><i class="bi bi-folder2-open"></i> Projects</div>
+                <h2 class="font-display section-title">Featured work</h2>
+                <p class="section-sub">Selected builds. Live links will be added soon.</p>
             </div>
             <div class="row g-4">
                 {% for project in projects %}
                 <div class="col-sm-6 col-lg-4">
-                    <div class="card-soft h-100 p-4 d-flex flex-column">
+                    <div class="glass-card project-card p-4 h-100 d-flex flex-column">
                         <div class="d-flex align-items-start justify-content-between mb-3">
-                            <div class="icon-circle-sm" style="background:#e0effe;color:#0c8ce9;">
-                                <i class="bi bi-folder2-open"></i>
-                            </div>
-                            <span class="badge bg-light text-secondary border rounded-pill">Coming soon</span>
+                            <div class="icon-box"><i class="bi bi-box"></i></div>
+                            <span class="badge-soon">Coming soon</span>
                         </div>
-                        <h3 class="font-display fw-semibold h5 mb-2">{{ project.title }}</h3>
-                        <p class="text-muted-custom small flex-grow-1 mb-3">{{ project.description }}</p>
+                        <h3 class="font-display h5 mb-2">{{ project.title }}</h3>
+                        <p class="small flex-grow-1 mb-3" style="color:var(--text-muted);">{{ project.description }}</p>
                         <a href="{{ project.link }}"
-                           class="btn btn-outline-primary btn-sm rounded-pill align-self-start {% if project.link == '#' %}disabled{% endif %}"
+                           class="btn btn-primary-soft btn-sm align-self-start {% if project.link == '#' %}disabled{% endif %}"
                            {% if project.link != '#' %}target="_blank" rel="noopener"{% endif %}>
                             {% if project.link == '#' %}
                                 Link coming soon
@@ -433,32 +702,31 @@
         </div>
     </section>
 
-    <section id="research" class="py-5 bg-soft">
-        <div class="container py-3 py-lg-4">
-            <div class="row justify-content-center mb-4 mb-lg-5">
-                <div class="col-lg-8 text-center">
-                    <span class="section-badge mb-3">Research</span>
-                    <h2 class="font-display fw-bold display-6 mb-3">Published Research</h2>
-                    <p class="text-muted-custom mb-0">Peer-reviewed paper published in IJSRMS.</p>
-                </div>
+    <!-- RESEARCH -->
+    <section id="research" class="section" style="background:rgba(15,23,42,0.35);">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center"><i class="bi bi-journal-richtext"></i> Research</div>
+                <h2 class="font-display section-title">Published research</h2>
+                <p class="section-sub">Peer-reviewed work in adaptive underwater object detection.</p>
             </div>
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <div class="card-soft p-4 p-md-5">
+                    <div class="glass-card research-card p-4 p-md-5">
                         <div class="row g-4 align-items-center">
                             <div class="col-md-auto text-center">
-                                <div class="icon-circle mx-auto" style="width:80px;height:80px;background:#e0effe;color:#0c8ce9;font-size:2rem;">
+                                <div class="icon-box mx-auto" style="width:72px;height:72px;font-size:1.75rem;border-radius:18px;">
                                     <i class="bi bi-file-earmark-text"></i>
                                 </div>
                             </div>
                             <div class="col">
-                                <p class="small fw-semibold mb-1 text-uppercase text-primary-custom" style="letter-spacing:0.04em;">
+                                <p class="small fw-semibold mb-1 text-uppercase" style="color:var(--primary);letter-spacing:0.05em;">
                                     {{ research.publisher }}
                                 </p>
-                                <h3 class="font-display fw-semibold h5 mb-2">{{ research.title }}</h3>
-                                <p class="text-muted-custom mb-3">{{ research.description }}</p>
-                                <a href="{{ research.link }}" target="_blank" rel="noopener" class="btn btn-primary rounded-pill px-4">
-                                    <i class="bi bi-file-pdf me-2"></i> View Research Paper
+                                <h3 class="font-display h5 mb-2">{{ research.title }}</h3>
+                                <p class="mb-3" style="color:var(--text-muted);">{{ research.description }}</p>
+                                <a href="{{ research.link }}" target="_blank" rel="noopener" class="btn btn-glow btn-sm px-3">
+                                    <i class="bi bi-file-pdf me-1"></i> View Research Paper
                                 </a>
                             </div>
                         </div>
@@ -468,46 +736,39 @@
         </div>
     </section>
 
-    <section id="contact" class="py-5 bg-white">
-        <div class="container py-3 py-lg-4">
-            <div class="row justify-content-center mb-4 mb-lg-5">
-                <div class="col-lg-8 text-center">
-                    <span class="section-badge mb-3">Contact</span>
-                    <h2 class="font-display fw-bold display-6 mb-3">Let's connect</h2>
-                    <p class="text-muted-custom mb-0">Reach out for collaborations, opportunities, or a conversation.</p>
-                </div>
+    <!-- CONTACT -->
+    <section id="contact" class="section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <div class="section-label justify-content-center"><i class="bi bi-chat-dots"></i> Contact</div>
+                <h2 class="font-display section-title">Let's work together</h2>
+                <p class="section-sub">Open to roles, collaborations, and research conversations.</p>
             </div>
-            <div class="row g-3 g-md-4 justify-content-center contact-card">
+            <div class="row g-3 g-md-4 justify-content-center">
                 <div class="col-sm-6 col-md-4">
-                    <a href="mailto:danielgift528@gmail.com">
-                        <div class="card-soft p-4 text-center h-100">
-                            <div class="icon-circle mx-auto mb-3" style="background:#e0effe;color:#0c8ce9;">
-                                <i class="bi bi-envelope-fill"></i>
-                            </div>
-                            <h4 class="font-display fw-semibold h6 mb-1">Email</h4>
-                            <p class="text-muted-custom small mb-0 text-break">danielgift528@gmail.com</p>
+                    <a class="contact-item" href="mailto:danielgift528@gmail.com">
+                        <div class="glass-card">
+                            <div class="icon-box mx-auto"><i class="bi bi-envelope-fill"></i></div>
+                            <h4 class="font-display">Email</h4>
+                            <p>danielgift528@gmail.com</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4">
-                    <a href="tel:+255762109902">
-                        <div class="card-soft p-4 text-center h-100">
-                            <div class="icon-circle mx-auto mb-3" style="background:#e0effe;color:#0c8ce9;">
-                                <i class="bi bi-telephone-fill"></i>
-                            </div>
-                            <h4 class="font-display fw-semibold h6 mb-1">Phone</h4>
-                            <p class="text-muted-custom small mb-0">+255 762 109 902</p>
+                    <a class="contact-item" href="tel:+255762109902">
+                        <div class="glass-card">
+                            <div class="icon-box mx-auto"><i class="bi bi-telephone-fill"></i></div>
+                            <h4 class="font-display">Phone</h4>
+                            <p>+255 762 109 902</p>
                         </div>
                     </a>
                 </div>
                 <div class="col-sm-6 col-md-4">
-                    <a href="https://github.com/Danny3026" target="_blank" rel="noopener">
-                        <div class="card-soft p-4 text-center h-100">
-                            <div class="icon-circle mx-auto mb-3" style="background:#e0effe;color:#0c8ce9;">
-                                <i class="bi bi-github"></i>
-                            </div>
-                            <h4 class="font-display fw-semibold h6 mb-1">GitHub</h4>
-                            <p class="text-muted-custom small mb-0">Danny3026</p>
+                    <a class="contact-item" href="https://github.com/Danny3026" target="_blank" rel="noopener">
+                        <div class="glass-card">
+                            <div class="icon-box mx-auto"><i class="bi bi-github"></i></div>
+                            <h4 class="font-display">GitHub</h4>
+                            <p>Danny3026</p>
                         </div>
                     </a>
                 </div>
@@ -515,84 +776,60 @@
         </div>
     </section>
 
-    <footer class="py-5">
+    <!-- FOOTER -->
+    <footer>
         <div class="container">
             <div class="row align-items-center g-3">
                 <div class="col-md-6 text-center text-md-start">
                     <p class="mb-1 fw-semibold text-white font-display">Daniel Gift Mapepele</p>
-                    <p class="small mb-0" style="color:#64748b;">Software Engineer · Ruaha Catholic University</p>
+                    <p class="small mb-0">Software Engineer · Ruaha Catholic University</p>
                 </div>
                 <div class="col-md-6 text-center text-md-end">
                     <div class="d-flex justify-content-center justify-content-md-end gap-3 mb-2">
-                        <a href="https://github.com/Danny3026" target="_blank" rel="noopener" aria-label="GitHub">
-                            <i class="bi bi-github fs-5"></i>
-                        </a>
-                        <a href="mailto:danielgift528@gmail.com" aria-label="Email">
-                            <i class="bi bi-envelope-fill fs-5"></i>
-                        </a>
-                        <a href="tel:+255762109902" aria-label="Phone">
-                            <i class="bi bi-telephone-fill fs-5"></i>
-                        </a>
+                        <a href="https://github.com/Danny3026" target="_blank" rel="noopener" aria-label="GitHub"><i class="bi bi-github fs-5"></i></a>
+                        <a href="mailto:danielgift528@gmail.com" aria-label="Email"><i class="bi bi-envelope-fill fs-5"></i></a>
+                        <a href="tel:+255762109902" aria-label="Phone"><i class="bi bi-telephone-fill fs-5"></i></a>
                     </div>
-                    <p class="small mb-0" style="color:#475569;">
-                        &copy; 2026 Daniel Gift Mapepele. All rights reserved.
-                    </p>
+                    <p class="small mb-0">&copy; 2026 Daniel Gift Mapepele. All rights reserved.</p>
                 </div>
             </div>
         </div>
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
     <script>
     (function () {
         'use strict';
-
         var toggler = document.getElementById('navToggler');
         var menu = document.getElementById('mainNavbar');
+        var navbar = document.getElementById('siteNavbar');
         if (!toggler || !menu) return;
 
         function openMenu() {
             menu.classList.add('show');
             toggler.setAttribute('aria-expanded', 'true');
-            toggler.classList.remove('collapsed');
         }
-
         function closeMenu() {
             menu.classList.remove('show');
             toggler.setAttribute('aria-expanded', 'false');
-            toggler.classList.add('collapsed');
         }
-
-        function isOpen() {
-            return menu.classList.contains('show');
-        }
+        function isOpen() { return menu.classList.contains('show'); }
 
         toggler.addEventListener('click', function (e) {
             e.preventDefault();
             e.stopPropagation();
-            if (isOpen()) {
-                closeMenu();
-            } else {
-                openMenu();
-            }
+            isOpen() ? closeMenu() : openMenu();
         });
 
         menu.querySelectorAll('a').forEach(function (link) {
             link.addEventListener('click', function () {
-                if (window.innerWidth < 992 && isOpen()) {
-                    closeMenu();
-                }
+                if (window.innerWidth < 992 && isOpen()) closeMenu();
             });
         });
 
         document.addEventListener('click', function (e) {
-            if (window.innerWidth >= 992) return;
-            if (!isOpen()) return;
-            var nav = document.getElementById('siteNavbar');
-            if (nav && !nav.contains(e.target)) {
-                closeMenu();
-            }
+            if (window.innerWidth >= 992 || !isOpen()) return;
+            if (navbar && !navbar.contains(e.target)) closeMenu();
         });
 
         document.addEventListener('keydown', function (e) {
@@ -600,29 +837,29 @@
         });
 
         window.addEventListener('resize', function () {
-            if (window.innerWidth >= 992) {
-                closeMenu();
-            }
+            if (window.innerWidth >= 992) closeMenu();
         });
 
+        // Navbar scrolled state
+        function onScrollNav() {
+            if (window.scrollY > 20) navbar.classList.add('scrolled');
+            else navbar.classList.remove('scrolled');
+        }
+        window.addEventListener('scroll', onScrollNav, { passive: true });
+        onScrollNav();
+
+        // Active section
         var sections = document.querySelectorAll('section[id]');
         var navLinks = document.querySelectorAll('.nav-link-custom');
-
         function updateActive() {
             var current = '';
             sections.forEach(function (sec) {
-                if (window.scrollY >= sec.offsetTop - 90) {
-                    current = sec.getAttribute('id');
-                }
+                if (window.scrollY >= sec.offsetTop - 100) current = sec.getAttribute('id');
             });
             navLinks.forEach(function (link) {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
+                link.classList.toggle('active', link.getAttribute('href') === '#' + current);
             });
         }
-
         window.addEventListener('scroll', updateActive, { passive: true });
         updateActive();
     })();
